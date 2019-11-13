@@ -1,23 +1,36 @@
 package pl.shozu.springapp.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Knight {
     private String name;
-    private String age;
+    private int age;
     private Quest quest;
 
-    public Knight(String name, String age, Quest quest ) {
-        this.name = name;
-        this.age = age;
-        this.quest = quest;
+    public Knight() {
+        this.name = "Lancelot";
+        this.age = 29;
     }
 
-    public Knight(String name, String age) {
+    public Knight(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
     public void setQuest(Quest quest){
+        System.out.println("ustawiam zadanie dla rycerza. ");
         this.quest = quest;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     @Override

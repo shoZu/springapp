@@ -1,26 +1,35 @@
 package pl.shozu.springapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import pl.shozu.springapp.domain.Castle;
-import pl.shozu.springapp.domain.Knight;
-import pl.shozu.springapp.domain.Quest;
+import pl.shozu.springapp.domain.Repository.InMemoryRepository;
+import pl.shozu.springapp.domain.Repository.KnightRepository;
+import pl.shozu.springapp.domain.Repository.QuestRepository;
+import pl.shozu.springapp.services.QuestService;
 
 @Component
 public class Starter implements CommandLineRunner {
     @Autowired
-    Castle castle;
+    KnightRepository knightRepository;
+
+    @Autowired
+    QuestRepository questRepository;
+
+    @Autowired
+    QuestService questService;
 
     @Override
     public void run(String... args) throws Exception {
-
-        System.out.println(castle);
-        Knight lancelot = new Knight("Lancelot", "30", new Quest("Uratuj Ksiezniczke"));
-        Knight percival = new Knight("Percival", "30");
-        percival.setQuest(new Quest("Zabij smoka"));
-        System.out.println(lancelot);
-        System.out.println(percival);
+        questRepository.createRandomQuest();
+        System.out.println(questRepository);
+        questRepository.createRandomQuest();
+        System.out.println(questRepository);
+        questRepository.createRandomQuest();
+        System.out.println(questRepository);
+        questService.assignRandomQuest("Lancelot");
+        questService.assignRandomQuest("Percival");
 
     }
 }

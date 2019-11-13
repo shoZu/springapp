@@ -1,5 +1,7 @@
 package pl.shozu.springapp.domain;
 
+import org.springframework.stereotype.Component;
+
 public class Quest {
     private String description;
 
